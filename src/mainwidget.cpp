@@ -2,10 +2,18 @@
 #include <QLabel>
 #include <QHBoxLayout>
 #include <QPushButton>
+//#include <QScrollArea>
+
+//QScrollArea::QScrollArea(QWidget * parent = 0)
 
 MainWidget::MainWidget(QWidget *parent) :  QWidget(parent)
 {
     layout=new QVBoxLayout(this);
+
+    //scrollArea = new QScrollArea;
+    //scrollArea->setBackgroundRole(QPalette::Dark);
+    //scrollArea->setWidget(layout);
+
 
     QHBoxLayout* buttonsBox=new QHBoxLayout(this);
 
@@ -40,6 +48,10 @@ MainWidget::MainWidget(QWidget *parent) :  QWidget(parent)
     blueButtons->addWidget(blueLedUpButton);
     QPushButton *blueLedDownButton=new QPushButton("Blue Down",this);
     blueButtons->addWidget(blueLedDownButton);
+    QPushButton *blueLedBlinkButton=new QPushButton("Blue Blink",this);
+    blueButtons->addWidget(blueLedBlinkButton);
+    QPushButton *blueLedFadeButton=new QPushButton("Blue Fade",this);
+    blueButtons->addWidget(blueLedFadeButton);
 
 
     QPushButton *redLedOnButton=new QPushButton("red On",this);
@@ -50,6 +62,10 @@ MainWidget::MainWidget(QWidget *parent) :  QWidget(parent)
     redButtons->addWidget(redLedUpButton);
     QPushButton *redLedDownButton=new QPushButton("red Down",this);
     redButtons->addWidget(redLedDownButton);
+    QPushButton *redLedBlinkButton=new QPushButton("red Blink",this);
+    redButtons->addWidget(redLedBlinkButton);
+    QPushButton *redLedFadeButton=new QPushButton("red Fade",this);
+    redButtons->addWidget(redLedFadeButton);
 
     QPushButton *greenLedOnButton=new QPushButton("green On",this);
     greenButtons->addWidget(greenLedOnButton);
@@ -59,6 +75,10 @@ MainWidget::MainWidget(QWidget *parent) :  QWidget(parent)
     greenButtons->addWidget(greenLedUpButton);
     QPushButton *greenLedDownButton=new QPushButton("green Down",this);
     greenButtons->addWidget(greenLedDownButton);
+    QPushButton *greenLedBlinkButton=new QPushButton("green Blink",this);
+    greenButtons->addWidget(greenLedBlinkButton);
+    QPushButton *greenLedFadeButton=new QPushButton("green Fade",this);
+    greenButtons->addWidget(greenLedFadeButton);
 
     QPushButton *orangeLedOnButton=new QPushButton("orange On",this);
     orangeButtons->addWidget(orangeLedOnButton);
@@ -68,6 +88,10 @@ MainWidget::MainWidget(QWidget *parent) :  QWidget(parent)
     orangeButtons->addWidget(orangeLedUpButton);
     QPushButton *orangeLedDownButton=new QPushButton("orange Down",this);
     orangeButtons->addWidget(orangeLedDownButton);
+    QPushButton *orangeLedBlinkButton=new QPushButton("orange Blink",this);
+    orangeButtons->addWidget(orangeLedBlinkButton);
+    QPushButton *orangeLedFadeButton=new QPushButton("orange Fade",this);
+    orangeButtons->addWidget(orangeLedFadeButton);
 
     QPushButton *extLedOnButton=new QPushButton("ext On",this);
     extButtons->addWidget(extLedOnButton);
@@ -77,6 +101,10 @@ MainWidget::MainWidget(QWidget *parent) :  QWidget(parent)
     extButtons->addWidget(extLedUpButton);
     QPushButton *extLedDownButton=new QPushButton("ext Down",this);
     extButtons->addWidget(extLedDownButton);
+    QPushButton *extLedBlinkButton=new QPushButton("ext Blink",this);
+    extButtons->addWidget(extLedBlinkButton);
+    QPushButton *extLedFadeButton=new QPushButton("ext Fade",this);
+    extButtons->addWidget(extLedFadeButton);
 
     LedButtonsBox->addLayout(blueButtons);
     LedButtonsBox->addLayout(redButtons);
@@ -100,27 +128,37 @@ MainWidget::MainWidget(QWidget *parent) :  QWidget(parent)
     connect(blueLedOffButton,  SIGNAL(clicked()), this, SLOT(blueLedOff()));
     connect(blueLedUpButton,  SIGNAL(clicked()), this, SLOT(blueLedUp()));
     connect(blueLedDownButton,  SIGNAL(clicked()), this, SLOT(blueLedDown()));
+    connect(blueLedBlinkButton, SIGNAL(clicked()), this, SLOT(blueLedBlink()));
+    connect(blueLedFadeButton, SIGNAL(clicked()), this, SLOT(blueLedFade()));
 
     connect(redLedOnButton,  SIGNAL(clicked()), this, SLOT(redLedOn()));
     connect(redLedOffButton,  SIGNAL(clicked()), this, SLOT(redLedOff()));
     connect(redLedUpButton,  SIGNAL(clicked()), this, SLOT(redLedUp()));
     connect(redLedDownButton,  SIGNAL(clicked()), this, SLOT(redLedDown()));
+    connect(redLedBlinkButton, SIGNAL(clicked()), this, SLOT(redLedBlink()));
+    connect(redLedFadeButton, SIGNAL(clicked()), this, SLOT(redLedFade()));
 
     connect(greenLedOnButton,  SIGNAL(clicked()), this, SLOT(greenLedOn()));
     connect(greenLedOffButton,  SIGNAL(clicked()), this, SLOT(greenLedOff()));
     connect(greenLedUpButton,  SIGNAL(clicked()), this, SLOT(greenLedUp()));
     connect(greenLedDownButton,  SIGNAL(clicked()), this, SLOT(greenLedDown()));
+    connect(greenLedBlinkButton, SIGNAL(clicked()), this, SLOT(greenLedBlink()));
+    connect(greenLedFadeButton, SIGNAL(clicked()), this, SLOT(greenLedFade()));
 
     connect(orangeLedOnButton,  SIGNAL(clicked()), this, SLOT(orangeLedOn()));
     connect(orangeLedOffButton,  SIGNAL(clicked()), this, SLOT(orangeLedOff()));
     connect(orangeLedUpButton,  SIGNAL(clicked()), this, SLOT(orangeLedUp()));
     connect(orangeLedDownButton,  SIGNAL(clicked()), this, SLOT(orangeLedDown()));
+    connect(orangeLedBlinkButton, SIGNAL(clicked()), this, SLOT(orangeLedBlink()));
+    connect(orangeLedFadeButton, SIGNAL(clicked()), this, SLOT(orangeLedFade()));
 
 
     connect(extLedOnButton,  SIGNAL(clicked()), this, SLOT(extLedOn()));
     connect(extLedOffButton,  SIGNAL(clicked()), this, SLOT(extLedOff()));
     connect(extLedUpButton,  SIGNAL(clicked()), this, SLOT(extLedUp()));
     connect(extLedDownButton,  SIGNAL(clicked()), this, SLOT(extLedDown()));
+    connect(extLedBlinkButton, SIGNAL(clicked()), this, SLOT(extLedBlink()));
+    connect(extLedFadeButton, SIGNAL(clicked()), this, SLOT(extLedFade()));
 
 
 
@@ -273,6 +311,42 @@ void MainWidget::blueLedDown() {
     }
 }
 
+void MainWidget::blueLedBlink() {
+    qWarning("Button clicked");
+    layout->addWidget(new QLabel(QString("Blue Led Blink")));
+
+
+    if (rfcomm.isConnected()) {
+       // layout->addWidget(new QLabel(QString("Connected")));
+        {
+            // Send command
+            qWarning("sending");
+            rfcomm.sendLine("l");
+        }
+    }
+    else {
+        layout->addWidget(new QLabel(QString("Cannot connect")));
+    }
+}
+
+void MainWidget::blueLedFade() {
+    qWarning("Button clicked");
+    layout->addWidget(new QLabel(QString("Blue LED Fade")));
+
+
+    if (rfcomm.isConnected()) {
+       // layout->addWidget(new QLabel(QString("Connected")));
+        {
+            // Send command
+            qWarning("sending");
+            rfcomm.sendLine("L");
+        }
+    }
+    else {
+        layout->addWidget(new QLabel(QString("Cannot connect")));
+    }
+}
+
 void MainWidget::redLedOn() {
     qWarning("Button clicked");
     layout->addWidget(new QLabel(QString("red Led On")));
@@ -338,6 +412,42 @@ void MainWidget::redLedDown() {
             // Send command
             qWarning("sending");
             rfcomm.sendLine("c");
+        }
+    }
+    else {
+        layout->addWidget(new QLabel(QString("Cannot connect")));
+    }
+}
+
+void MainWidget::redLedBlink() {
+    qWarning("Button clicked");
+    layout->addWidget(new QLabel(QString("red Led Blink")));
+
+
+    if (rfcomm.isConnected()) {
+       // layout->addWidget(new QLabel(QString("Connected")));
+        {
+            // Send command
+            qWarning("sending");
+            rfcomm.sendLine("k");
+        }
+    }
+    else {
+        layout->addWidget(new QLabel(QString("Cannot connect")));
+    }
+}
+
+void MainWidget::redLedFade() {
+    qWarning("Button clicked");
+    layout->addWidget(new QLabel(QString("red LED Fade")));
+
+
+    if (rfcomm.isConnected()) {
+       // layout->addWidget(new QLabel(QString("Connected")));
+        {
+            // Send command
+            qWarning("sending");
+            rfcomm.sendLine("K");
         }
     }
     else {
@@ -418,6 +528,42 @@ void MainWidget::greenLedDown() {
     }
 }
 
+void MainWidget::greenLedBlink() {
+    qWarning("Button clicked");
+    layout->addWidget(new QLabel(QString("green Led Blink")));
+
+
+    if (rfcomm.isConnected()) {
+       // layout->addWidget(new QLabel(QString("Connected")));
+        {
+            // Send command
+            qWarning("sending");
+            rfcomm.sendLine("j");
+        }
+    }
+    else {
+        layout->addWidget(new QLabel(QString("Cannot connect")));
+    }
+}
+
+void MainWidget::greenLedFade() {
+    qWarning("Button clicked");
+    layout->addWidget(new QLabel(QString("green LED Fade")));
+
+
+    if (rfcomm.isConnected()) {
+       // layout->addWidget(new QLabel(QString("Connected")));
+        {
+            // Send command
+            qWarning("sending");
+            rfcomm.sendLine("J");
+        }
+    }
+    else {
+        layout->addWidget(new QLabel(QString("Cannot connect")));
+    }
+}
+
 void MainWidget::orangeLedOn() {
     qWarning("Button clicked");
     layout->addWidget(new QLabel(QString("orange Led On")));
@@ -490,6 +636,42 @@ void MainWidget::orangeLedDown() {
     }
 }
 
+void MainWidget::orangeLedBlink() {
+    qWarning("Button clicked");
+    layout->addWidget(new QLabel(QString("orange Led Blink")));
+
+
+    if (rfcomm.isConnected()) {
+       // layout->addWidget(new QLabel(QString("Connected")));
+        {
+            // Send command
+            qWarning("sending");
+            rfcomm.sendLine("h");
+        }
+    }
+    else {
+        layout->addWidget(new QLabel(QString("Cannot connect")));
+    }
+}
+
+void MainWidget::orangeLedFade() {
+    qWarning("Button clicked");
+    layout->addWidget(new QLabel(QString("orange LED Fade")));
+
+
+    if (rfcomm.isConnected()) {
+       // layout->addWidget(new QLabel(QString("Connected")));
+        {
+            // Send command
+            qWarning("sending");
+            rfcomm.sendLine("H");
+        }
+    }
+    else {
+        layout->addWidget(new QLabel(QString("Cannot connect")));
+    }
+}
+
 void MainWidget::extLedOn() {
     qWarning("Button clicked");
     layout->addWidget(new QLabel(QString("ext Led On")));
@@ -555,6 +737,42 @@ void MainWidget::extLedDown() {
             // Send command
             qWarning("sending");
             rfcomm.sendLine("b");
+        }
+    }
+    else {
+        layout->addWidget(new QLabel(QString("Cannot connect")));
+    }
+}
+
+void MainWidget::extLedBlink() {
+    qWarning("Button clicked");
+    layout->addWidget(new QLabel(QString("ext Led Blink")));
+
+
+    if (rfcomm.isConnected()) {
+       // layout->addWidget(new QLabel(QString("Connected")));
+        {
+            // Send command
+            qWarning("sending");
+            rfcomm.sendLine(";");
+        }
+    }
+    else {
+        layout->addWidget(new QLabel(QString("Cannot connect")));
+    }
+}
+
+void MainWidget::extLedFade() {
+    qWarning("Button clicked");
+    layout->addWidget(new QLabel(QString("ext LED Fade")));
+
+
+    if (rfcomm.isConnected()) {
+       // layout->addWidget(new QLabel(QString("Connected")));
+        {
+            // Send command
+            qWarning("sending");
+            rfcomm.sendLine(":");
         }
     }
     else {

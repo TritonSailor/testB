@@ -1,5 +1,6 @@
 #include "mainwidget.h"
 #include <QApplication>
+#include <QScrollArea>
 
 int main(int argc, char *argv[])
 {
